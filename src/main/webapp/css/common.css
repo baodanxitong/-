@@ -55,7 +55,7 @@ img {
     font-size: 16px;
 }
 
-/*通用样式*/
+/*閫氱敤鏍峰紡*/
 body {
     line-height: 1.4;
     color: #333;
@@ -119,7 +119,7 @@ body {
     color: #fea526;
     font-weight: bold;
     margin:0 3px;
-    font-family: "宋体",sans-serif;
+    font-family: "瀹嬩綋",sans-serif;
 }
 .header_user .fg{
     padding: 0 8px;
@@ -135,7 +135,7 @@ body {
     height:100px;
     overflow: hidden;
     display: block;
-    background: url("../images/logo-v3.png") no-repeat center;
+    background: url("../images/list_imgs/logo.png") no-repeat center;
     text-indent: -9999px;
 }
 .header_nav .my_policy{
@@ -182,7 +182,7 @@ body {
     padding-left: 24px;
     background: url("../images/header-icon.png") no-repeat 0 -195px;
 }
-/*分类、轮播*/
+/*鍒嗙被銆佽疆鎾�*/
 .floor_main{
     position: relative;
     z-index: 1;
@@ -413,7 +413,7 @@ body {
     height: 100%;
     display: block;
 }
-/*轮播*/
+/*杞挱*/
 .scroll_box{
     position: relative;
 }
@@ -449,7 +449,7 @@ body {
 .container{
     position: relative;
 }
-/*热卖推荐*/
+/*鐑崠鎺ㄨ崘*/
 .container .hot{
     padding-top: 40px;
     width:100%;
