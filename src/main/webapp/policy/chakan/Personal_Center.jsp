@@ -1,3 +1,111 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	String path=request.getContextPath();
+	String basepath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<base href="<%=basepath %>">
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="css/bootstrap4alpha.css"/>
+    <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="css/shCore.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <style type="text/css" class="init">
+        .right{
+            font-size: 25px;
+        }
+        #light{
+            width: 527px;
+            float: left;
+        }
+        #Blight{
+            background-color: #c8e5bc;
+            float: right;
+            
+        }
+        #example > thead > tr > th {
+            text-align: center;
+        }
+    </style>
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" src="js/dataTables.bootstrap4.js"></script>
+    <script type="text/javascript" language="javascript" src="js/dataTables.buttons.js"></script>
+    <script type="text/javascript" language="javascript" src="js/buttons.bootstrap4.js"></script>
+    <script type="text/javascript" src="js/jszip.js"></script>
+   
+    <script type="text/javascript" language="javascript" class="init">
+    	var dataTable;
+        $(document).ready(function() {
+					var columName = [{"data":"投保人"},{"data":"被保人"},{"data":"产品名称"},{"data":"价格"},{"data":"保单生效时间"},{"data":"点击查看详情"}];
+			        for(var i =0;i<columName.length; i++){
+			        	$("#example thead tr").append("<th>"+columName[i].data+"</th>");
+			        }
+			        var table = $('#example').DataTable( {
+		                ordering: false,//是否启用排序
+		                searching: true,//搜索
+		                language: {
+		                    lengthMenu: '每页显示多少行： <select style="height: 35px;width: 100px">'+
+		                    '<option value="5">5</option>'+
+		                    '<option value="10">10</option>'+
+		                    '<option value="20">20</option>'+
+		                    '<option value="30">30</option>'+
+		                    '<option value="40">40</option>'+
+		                    '<option value="50">50</option>'+
+		                    '<option value="-1">不限</option>'+
+		                    '</select>',
+		                    search: '<span class="label label-success">搜索：</span>',//右上角的搜索文本，可以写html标签
+		
+		                    paginate: {//分页的样式内容。
+		                        previous: "上一页",
+		                        next: "下一页",
+		                        first: "第一页",
+		                        last: "最后"
+		                    },
+		                    zeroRecords: "没有内容",//table tbody内容为空时，tbody的内容。
+		                    //下面三者构成了总体的左下角的内容。
+		                    info: "总共_PAGES_ 页，显示第_START_ 到第 _END_ ，筛选之后得到 _TOTAL_ 条，初始_MAX_ 条 ",//左下角的信息显示，大写的词为关键字。
+		                    infoEmpty: "0条记录",//筛选为空时左下角的显示。
+		                    infoFiltered: ""//筛选之后的左下角筛选提示，
+		                },
+		                paging:true,
+		                pagingType: "full_numbers",//分页样式的类型
+		                data: dataTable,
+		                lengthChange: true,
+		                columns:columName,
+		                'dom': '<"left"f>r<"right"<"#light"l><"Blight"B>>tip',
+		                buttons: [ 'excel'],
+		                createdRow : function ( row, data, index ) {
+		                    $('td', row).css('font-weight',"bold").css("text-align","center");
+		                },
+		
+		          } );
+//			    },
+//         	}); 
+		var date = getUrlParamById('date');
+        var pay_time = JSON.stringify(date);
+        alert(pay_time);
+        } );
+        
+        $(function(){
+    		$("#geren").css("padding-bottom","0");
+    		$("#geren").css("border-bottom","2px solid #ff6700");
+    	});
+    </script>
+<style type="text/css">
 /*reset*/
 input, textarea, select {
     font-size: 100%;
@@ -126,7 +234,7 @@ body {
 }
 /*header_nav*/
 .header_nav{
-    height: 100px;
+    height: 110px;
     border-bottom: 2px solid #ff6700;
     background: #fff;
 }
@@ -177,6 +285,7 @@ body {
 .header_nav .menu li a:hover{
     padding-bottom: 0;
     border-bottom: 2px solid #ff6700;
+    text-decoration: none;
 }
 .header_nav .menu li.special a{
     padding-left: 24px;
@@ -617,3 +726,119 @@ body {
 .sideBar a.backtop:hover{
     background-position: -42px -40px;
 }
+
+</style>
+</head>
+<body>
+
+<div style="width: 100%; min-width: 1200px;background-color: red;display: block;">
+<!--------------------------------------头用户开始------------------------------------->
+<div class="header_user">
+        <div class="main_width">
+            <span class="tel">客服电话：400-663-6600（周一至周六 9:00-18:00）</span>
+            <span class="fr">
+                <span class="my_insurance"><a href="#">我的保险</a></span>
+                <span class="Backlog"><a href="#">未完成订单</a></span>
+                <span class="message"><a href="#">消息</a></span>
+                <span class="register"><a href="/ma/register">注册</a></span>
+                <span class="fg"><a href="#">|</a></span>
+                <span><a href="/ma/login">登录</a></span>
+            </span>
+        </div>
+    </div>
+</div>
+<!---------------------------------------头用户结束-------------------------------------->
+	<div class="header_nav">
+        <div style="width: 320px;height: 105px;float: left; margin-left: 185px"><img src="/images/list_imgs/logo.png"/></div>
+        <div style="height: 32px;width: 424px;margin-left: 750px;">
+		        <ul class="menu" style="margin-top: 65px">
+                    <li id="subscript0" class=""><a id="shouye" href="ma/index">首页</a></li>
+                    <!-- special -->
+                    <li id="subscript1" class=""><a >保险产品</a></li>
+                    <li id="subscript2" class=""><a id="geren" style="padding-bottom:0;border-bottom:2px solid #ff6700;">个人中心</a></li>
+                    <li id="subscript3" class=""><a>关于我们</a></li>
+                </ul>
+        </div>
+    </div>
+
+	<div class="container" style="height: 450px">
+	    <section>
+	        <div class="panel panel-default">
+	            <div class="panel-body">
+	                <table id="example" class="table table-bordered table-striped table-hover">
+	                    <thead>
+	                    <tr id="table_tr"></tr>
+	                    </thead>
+						<tbody>
+						<%-- <c:forEach items="" var="">
+							<tr>
+								<td>1</td>
+								<td>1</td>
+								<td>1</td>
+								<td>1</td>
+								<td>1</td>
+								<td>1</td>
+							</tr>
+						</c:forEach> --%>
+							<tr>
+								<td>1</td>
+								<td>1</td>
+								<td>1</td>
+								<td>1</td>
+								<td>1</td>
+								<td><a href="cc/jump">详情</a></td>
+							</tr>
+							
+					</tbody>
+	                </table>
+	            </div>
+	        </div>
+	    </section>
+	</div>
+
+
+<div class="wrapper">
+		<div class="copyright" style="height: 180px">
+	        <div class="main_width footer">
+	            <div class="footer_nav">
+	                <p>
+	                    <a href="#">关于民乐保险</a>
+	                    <span class="divider">|</span>
+	                    <a href="#">关于民乐小金库</a>
+	                    <span class="divider">|</span>
+	                    <a href="#">关于民乐钱包</a>
+	                    <span class="divider">|</span>
+	                    <a href="#">关于民乐白条</a>
+	                    <span class="divider">|</span>
+	                    <a href="#">联系我们</a>
+	                    <span class="divider">|</span>
+	                    <a href="#">免责声明</a>
+	                </p>
+	                <p>Copyright © 2004-2016 民乐ML.com 版权所有</p>
+	            </div>
+	            <div class="footer_contact">
+	                <div class="f_contact_time">
+	                    联系我们<span>（09:00-22:00）</span>
+	                </div>
+	                <div class="f_contact_content">
+	                    <div class="f_cc_left">
+	                        <span class="f_cc_item">个人业务：400-098-8511</span>
+	                        <span class="f_cc_item">企业业务：400-088-8816</span>
+	                    </div>
+	                    <div class="f_cc_mid">
+	                        <a href="#" class="f_cc_link item_JIMI">咨询ML</a>
+	                        <a href="#" class="f_cc_link item_kefu">在线客服</a>
+	                    </div>
+	                    <div class="f_cc_right">
+	                        <a href="#" class="f_cc_link item_mail">客服邮箱</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!--页脚结束-->
+	</div>
+
+
+</body>
+</html>
