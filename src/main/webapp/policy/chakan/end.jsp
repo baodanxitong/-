@@ -74,3 +74,7 @@ function gopage(myurl,menuid){
     </div>
     <!--页脚结束-->
 </div>
+
+
+</body>
+</html>
