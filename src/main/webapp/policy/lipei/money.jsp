@@ -11,8 +11,8 @@
 <head>
 <base href="<%=basepath %>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+<title>健康险</title>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/jquery.slideBox.css">
@@ -56,14 +56,25 @@
     font-size: 12px;
     margin:0 6px;
 }
-.jine{
+
+	.jine{
 	float: right;
-	padding-right: 50px;
+	padding-right: 100px;
 	padding-top: -50px;
 	font-size: 19px;
 	color: red; 
+	background-color: #F8F4F4;
 }
+.error{
+	color:red;
+	
+}
+
     </style>
+    
+   <script type="text/javascript">
+   		
+   </script>
 </head>
 <body>
 <jsp:include page="/houtaitouwei/top.jsp"></jsp:include>
@@ -78,11 +89,11 @@
                  <div class="biaodan">
                 <p>
                         <label for="">保单编号</label>
-                        <input type="text" class="input" placeholder="输入保单编号">
+                        <input type="text" id="baodan" name="baodan" class="input" placeholder="输入保单编号">
                     </p>
                 <p>
                         <label for="recognizeeName">用药费</label>
-                        <input type="text" class="input" placeholder="药费" id="recognizeeName">
+                        <input type="text" class="input" placeholder="药费" id="">
                     </p>
                     <p>
                         <label for="">床位费</label>
@@ -119,10 +130,12 @@
                     <input type="button" class="subBtn" value="查看">
                    </div>
                     <div class="jine">
-                    <label>应该理赔的金额为:</label><div id="qian"></div>
+                    <label>应该理赔的金额为:</label><label id="qian"></label>
                     </div>
                 </div>
                 </div>
 </div>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/messages_zh.js"></script>
 </body>
 </html>
