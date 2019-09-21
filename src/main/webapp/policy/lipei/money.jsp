@@ -11,8 +11,8 @@
 <head>
 <base href="<%=basepath %>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+<title>健康险</title>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/jquery.slideBox.css">
@@ -56,14 +56,129 @@
     font-size: 12px;
     margin:0 6px;
 }
-.jine{
+
+	.jine{
 	float: right;
-	padding-right: 50px;
+	padding-right: 100px;
 	padding-top: -50px;
 	font-size: 19px;
 	color: red; 
+	background-color: #F8F4F4;
 }
+.error{
+	color:red;
+	font-size: 12px;
+	
+}
+
     </style>
+    
+   <script type="text/javascript">
+   		function validform(){
+   			return $(".dform").validate({
+   				rules: { 
+   					baodan: { //不能为空 
+  				    required: true
+  				   },   
+  				 medicine:{
+  					   number:true
+  				   },
+  				 bed:{
+  					   number:true
+  				   },
+  				 food:{
+  					number:true
+  				   },
+  				 nursing:{
+  					   number:true
+  					   
+  				   },
+  				 outpatient:{
+   					number:true
+   				   },
+   				ambulance:{
+  					number:true
+  				   },
+  				 medical:{
+   					number:true
+   				   },
+   				check:{
+  					number:true
+  				   },
+  				 operation:{
+   					number:true
+   				   },
+  			  },
+  			 messages:{
+  				  baodan: { //不能为空 
+    				    required: "订单编号不能为空"
+    				   },   
+    				  
+    				   medicine:{
+      					   number:"金额必须为数字"
+      				   },
+      				 bed:{
+      					   number:"金额必须为数字"
+      				   },
+      				 food:{
+      					number:"金额必须为数字"
+      				   },
+      				 nursing:{
+      					   number:"金额必须为数字"
+      					   
+      				   },
+      				 outpatient:{
+       					number:"金额必须为数字"
+       				   },
+       				ambulance:{
+      					number:"金额必须为数字"
+      				   },
+      				 medical:{
+       					number:"金额必须为数字"
+       				   },
+       				check:{
+      					number:"金额必须为数字"
+      				   },
+      				 operation:{
+       					number:"金额必须为数字"
+       				   },
+  			  }
+   			})
+   		}
+   		$(validform());
+   		function count(){
+    		var baodan=$("#baodan").val();//保单编号
+    		var medicine=parseFloat($("#medicine").val());//医药费
+    		var bed=parseFloat($("#bed").val());//床位费
+    		var food=parseFloat($("#food").val());//住院膳食
+    		var nursing=parseFloat($("#nursing").val());//护理费
+    		var outpatient=parseFloat($("#outpatient").val());//门诊费
+    		var ambulance=parseFloat($("#ambulance").val());//救护车使用费
+    		var medical=parseFloat($("#medical").val());//医疗费
+    		var check=parseFloat($("#check").val());//检查费
+    		var operation=parseFloat($("#operation").val());//手术费
+    		var sum=0;
+    		console.log(baodan);
+    		console.log(bed);
+    		if (validform().form()) {
+    		/* $.ajax({
+    			type:'post',
+    			url:'',
+    			dataType:'json',
+    			success:function(data){
+    				
+    				if(sum>data.border){
+    					sum=data.border-10000;
+    				}
+    			}
+    		}) */
+    		 sum=medicine+bed+food+nursing+outpatient+ambulance+medical+check+operation-10000;
+    		}else{}
+    		if(sum>0){
+    		$("#qian").html(sum);
+    		}else{$("#qian").html(0);}
+    	}
+   </script>
 </head>
 <body>
 <jsp:include page="/houtaitouwei/top.jsp"></jsp:include>
@@ -75,54 +190,58 @@
                     <span>(注:只针对健康险理赔)</span>
                     
                 </h2>
+                <form action="" class="dform">
                  <div class="biaodan">
                 <p>
                         <label for="">保单编号</label>
-                        <input type="text" class="input" placeholder="输入保单编号">
+                        <input type="text" id="baodan" name="baodan" class="input" placeholder="输入保单编号">
                     </p>
                 <p>
                         <label for="recognizeeName">用药费</label>
-                        <input type="text" class="input" placeholder="药费" id="recognizeeName">
+                        <input type="text" class="input" id="medicine" name="medicine" placeholder="药费" />
                     </p>
                     <p>
                         <label for="">床位费</label>
-                        <input type="text" class="input" placeholder="床位费">
+                        <input type="text" class="input" id="bed" name="bed" placeholder="床位费" />
                     </p>
                      <p>
                         <label for="">住院膳食</label>
-                        <input type="text" class="input" placeholder="住院膳食费">
+                        <input type="text" class="input" id="food" name="food" placeholder="住院膳食费" />
                     </p>
                      <p>
                         <label for="">护理费</label>
-                        <input type="text" class="input" placeholder="护理费">
+                        <input type="text" class="input" id="nursing" name="nursing" placeholder="护理费" />
                     </p>
                      <p>
                         <label for="">门诊费</label>
-                        <input type="text" class="input" placeholder="门诊费">
+                        <input type="text" class="input" id="outpatient" name="outpatient" placeholder="门诊费" />
                     </p>
                      <p>
                         <label for="">救护车使用费</label>
-                        <input type="text" class="input" placeholder="救护车使用费">
+                        <input type="text" class="input" id="ambulance" name="ambulance" placeholder="救护车使用费" />
                     </p>
                      <p>
                         <label for="">医疗费</label>
-                        <input type="text" class="input" placeholder="医疗费">
+                        <input type="text" class="input" id="medical" name="medical" placeholder="医疗费" />
                     </p>
                      <p>
                         <label for="">检查费</label>
-                        <input type="text" class="input" placeholder="检查费">
+                        <input type="text" class="input" id="check" name="check" placeholder="检查费" />
                     </p>
                      <p>
                         <label for="">手术费</label>
-                        <input type="text" class="input" placeholder="手术费">
+                        <input type="text" class="input" id="operation" name="operation" placeholder="手术费" />
                     </p>
-                    <input type="button" class="subBtn" value="查看">
+                    <input type="button" class="subBtn" value="查看" onclick="count()" />
                    </div>
+                   </form>
                     <div class="jine">
-                    <label>应该理赔的金额为:</label><div id="qian"></div>
+                    <label>应该理赔的金额为:</label><label id="qian"></label>
                     </div>
                 </div>
                 </div>
 </div>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/messages_zh.js"></script>
 </body>
 </html>
