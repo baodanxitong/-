@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-        <mapper namespace="cz.zl.bd.dao.tests"></mapper>
+        <mapper namespace="cz.zl.bd.dao.IAuditorDAO">
+        
+        	<select id="findbyid" parameterType="java.lang.String" resultType="cz.zl.bd.pojo.Auditor_list">
+        		select a.Auditor_number,a.Auditor_account_number,a.Auditor_pwd,a.Auditor_name from Auditor_list a where a.Auditor_account_number=#{Auditor_account_number}
+        	</select>
+        	
+        	<insert id="insertall" parameterType="cz.zl.bd.pojo.Auditor_list">
+        		insert into Auditor_list(Auditor_number,Auditor_account_number,Auditor_pwd,Auditor_name) values(Auditor_list_number_Seq.Nextval,#{Auditor_account_number},#{Auditor_pwd},#{Auditor_name})
+        	</insert>
+        	
+        	<select id="findall" resultType="cz.zl.bd.pojo.User_apply">
+        		select applyid,apply_name,relationship,apply_phone,bank_deposit,bank_name,bank_num,apply_date,settlementstate,hospital_url,url_a,url_b,url_c,beibao_id,insurance_id from User_apply
+        	</select>
+        	
+        	<select id="findByUserId" parameterType="java.lang.Integer" resultType="cz.zl.bd.pojo.User_apply">
+        		select applyid,apply_name,relationship,apply_phone,bank_deposit,bank_name,bank_num,apply_date,settlementstate,hospital_url,url_a,url_b,url_c,beibao_id,insurance_id from User_apply where applyid=#{applyid}
+        	</select>
+        	
+        	<select id="findByToubao" parameterType="java.lang.Integer" resultType="cz.zl.bd.pojo.Toubao">
+        		select toubao_id,taobao_name,id_card,phone,email,city from toubao where toubao_id=#{toubao_id}
+        	</select>
+        	
+        	<select id="findByBeibao" parameterType="java.lang.Integer" resultType="cz.zl.bd.pojo.Beibao">
+        		select beibao_id,relation,beibao_name,id_card,phone from beibao where beibao_id=#{beibao_id}
+        	</select>
+        	
+        	<insert id="insertBySettlement" parameterType="cz.zl.bd.pojo.Admin_Settlement">
+        		insert into Admin_Settlement values(Auditor_list_number_Seq.Nextval,#{applyid},#{tao_name},#{beibao_name},#{id_card},#{apply_date})
+        	</insert>
+        
+        </mapper>
