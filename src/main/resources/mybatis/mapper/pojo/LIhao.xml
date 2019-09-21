@@ -3,11 +3,35 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
         <mapper namespace="cz.zl.bd.dao.ILiHaoDAO">
-        	<select id="findInfo" resultType="cz.zl.bd.pojo.Info">
-        		select t.toubao_name,b.beibao_name,p.product_name，i.price，i.start_date 
+        <!-- 前台用户查看保单sql -->
+        	<select id="findInfo" parameterType="java.lang.Integer" resultType="cz.zl.bd.pojo.Info">
+        		select t.toubao_name,b.beibao_name,p.product_name，i.price，i.start_date,i.status,i.insurance_id
         		from toubao t,beibao b,product p,insurance i,consumer c
 				where i.toubao_person=t.toubao_id and i.beibao_person=b.beibao_id 
-				and i.produce_id=p.product_id and i.user_id=c.cid and c.cid=1
+				and i.produce_id=p.product_id and i.user_id=c.cid and c.cid=#{cid}
         	</select>
-        
+        	
+        	<!-- 后台业务员查看保单sql -->
+        	<select id="findhoutai" parameterType="java.lang.Integer" resultType="cz.zl.bd.pojo.Info">
+        		select t.toubao_name,b.beibao_name,p.product_name，i.price，i.start_date,i.status,i.insurance_id
+        		from toubao t,beibao b,product p,insurance i,consumer c
+				where i.toubao_person=t.toubao_id and i.beibao_person=b.beibao_id 
+				and i.produce_id=p.product_id and i.user_id=c.cid and c.cid=#{cid} and
+				i.status=1
+        	</select>
+        	
+        	
+        	<select id="findInsurance" parameterType="java.lang.Integer" resultType="cz.zl.bd.pojo.Insurance">
+        		select p.product_name ,
+				t.toubao_name,t.id_card as toubao_id_card,t.phone as toubao_phone,t.email,
+				b.relation,b.beibao_name,b.id_card as beibao_id_card,b.phone as beibao_phone,
+				i.style,i.price,i.border,i.start_date,i.end_date,
+				i.status from
+				insurance i,toubao t,beibao b,product p,consumer c
+				where i.toubao_person	=t.toubao_id and
+				i.beibao_person=b.beibao_id	and
+				i.produce_id=p.product_id and
+				i.user_id=c.cid and 
+				i.insurance_id=#{insurance_id}
+        	</select>
         </mapper>

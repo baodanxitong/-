@@ -52,7 +52,7 @@
     <script type="text/javascript" language="javascript" class="init">
     	var dataTable;
         $(document).ready(function() {
-					var columName = [{"data":"投保人"},{"data":"被保人"},{"data":"产品名称"},{"data":"价格"},{"data":"保单生效时间"},{"data":"点击查看详情"}];
+					var columName = [{"data":"投保人"},{"data":"被保人"},{"data":"产品名称"},{"data":"价格"},{"data":"保单生效时间"},{"data":"点击查看详情"},{"data":"操作"}];
 			        for(var i =0;i<columName.length; i++){
 			        	$("#example thead tr").append("<th>"+columName[i].data+"</th>");
 			        }
@@ -782,7 +782,29 @@ body {
 									<fmt:formatDate value="${il.start_date }" pattern="yyyy年-MM月-dd日"/>
 								</td>
 								<%-- <td>${il.start_date }</td> --%>
-								<td><a href="cc/jump">详情</a></td>
+								<td>
+								<c:choose>
+									<c:when test="${il.status==1 }">
+										<a href="cc/jump">详情</a>
+									</c:when>
+									<c:when test="${il.status==0 }">
+										<span style="color: #c0c0c0">详情</span>
+									</c:when>
+								</c:choose>
+								</td>
+								<td>
+								<c:choose>
+									<c:when test="${il.status==1 }">
+										<a href="app/ye" style="color: red">申请理赔</a>
+										<span>|</span>
+										<a href="http://10.1.14.175:8080/queryalltuibaoinfo" style="color: red">申请退保</a>
+									</c:when>
+									<c:when test="${il.status==0 }">
+										<span style="color: #c0c0c0">已过期</span>
+									</c:when>
+								</c:choose>
+								
+								</td>
 							</tr>
 						</c:forEach> 
 							

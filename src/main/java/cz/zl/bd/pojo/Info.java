@@ -11,6 +11,13 @@ public class Info implements Serializable {
 	private String product_name;//产品名称
 	private Double price;//保费
 	private Date start_date;//生效时间
+	private Integer status;//保单状态
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	public String getToubao_name() {
 		return toubao_name;
 	}
