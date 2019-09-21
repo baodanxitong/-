@@ -121,7 +121,7 @@
     		var tian=$("#tian").val();//住院天数
     		var yiliao=$("#yiliao").val();//医疗约定金额
     		var sum=0;
-    		console.log(bili);
+    		console.log(shanghai);
     		console.log(yiliao);
     		if (validform().form()) {
     		 sum=shanghai*bili+jingtie*tian+(yiliao-100)*0.8;

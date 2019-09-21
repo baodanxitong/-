@@ -5,6 +5,7 @@
 	String basepath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 	
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
 <html>
@@ -85,8 +86,8 @@ $(function() {
 </style>
 </head>
 <body>
-
-<form action="" id="jvForm"> 
+<jsp:include page="/touwei/head.jsp" /> 
+<form action="app/load" id="jvForm"> 
   用 户 名:<input type="text" name="username"/></br> 
   密 码:<input type="password" name="password" id="password"/></br> 
   确认密码:<input type="password" name="confirm_password"/></br> 
@@ -96,6 +97,11 @@ $(function() {
   邮 箱:<input type="text" name="email" /></br> 
   <input type="submit" value="提交" /> 
 </form> 
+<a href="app/abc">点击</a>
+<c:forEach items="${d }" var="b">
+<img alt="" src="${b.urlA }">
+</c:forEach>
+<jsp:include page="/touwei/end.jsp" /> 
 <script type="text/javascript" src="js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="js/messages_zh.js"></script>
 

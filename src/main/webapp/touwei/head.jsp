@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/jquery.slideBox.css">
-    <script src="js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 	<script type="text/javascript">
 	$(function(){
 // 	 	var h = document.documentElement.offsetHeight;
