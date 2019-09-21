@@ -28,7 +28,7 @@ $(function(){
 		<jsp:include page="top.jsp"></jsp:include>
 		<jsp:include page="left.jsp"></jsp:include>
 		<!-- 左边两个div的宽度为250px -->
-		<div style="width: 500px;height: 500px;background-color: red;margin:25px 425px">
+		<div style="width: 500px;height: 500px;margin:25px 425px">
 			<img src="/images/1.png"/>
 		</div>
 </body>

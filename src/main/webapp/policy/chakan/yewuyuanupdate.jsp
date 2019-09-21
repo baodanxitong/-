@@ -1,7 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 	String path=request.getContextPath();
 	String basepath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,13 +18,19 @@ $(function(){
 			$(this).removeClass("left1_li_hover");
 			})
 	})
+	
+	function goinfo(){
+		window.location.href="/cc/gotoinfo";
+	}
 </script>
+
+
 <head>
 <meta charset="UTF-8">
 <base href="<%=basepath%>">
-<title>业务员</title>
+<title>保单详情</title>
 
-	<link rel="stylesheet" href="css/bootstrap4alpha.css"/>
+<link rel="stylesheet" href="css/bootstrap4alpha.css"/>
     <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="css/buttons.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="css/shCore.css">
@@ -72,7 +75,7 @@ $(function(){
 //               type: "get",
 //               url: "head.json",
 //               success: function(columName){
-					var columName = [{"data":"投保人"},{"data":"被保人"},{"data":"产品名称"},{"data":"价格"},{"data":"保单生效时间"},{"data":"点击查看详情"}];
+					var columName = [{"data":"投保人"},{"data":"被保人"},{"data":"保单生效时间"},{"data":"保单失效时间"},{"data":"保单价格"},{"data":"详情"}];
 			        for(var i =0;i<columName.length; i++){
 			        	$("#example thead tr").append("<th>"+columName[i].data+"</th>");
 			        }
@@ -124,39 +127,81 @@ $(function(){
         alert(pay_time);
         } );
     </script>
-    
 </head>
 <body>
 		<jsp:include page="top.jsp"></jsp:include>
 		<jsp:include page="left.jsp"></jsp:include>
-		
-		<div class="container" style="width: 800px;height: 500px;margin:25px 425px">
-			<section>
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <table id="example" class="table table-bordered table-striped table-hover">
-                    <thead>
-                    <tr id="table_tr"></tr>
-                    </thead>
-					<tbody>
-					<c:forEach items="${list }" var="l">
-							<tr>
-								<td>${l.toubao_name }</td>
-								<td>${l.beibao_name }</td>
-								<td>${l.product_name }</td>
-								<td>${l.price }</td>
-								<td>
-									<fmt:formatDate value="${l.start_date }" pattern="yyyy年-MM月-dd日"/>
-								</td>
-								<%-- <td>${il.start_date }</td> --%>
-								<td><a href="cc/gotoinfo">详情</a></td>
-							</tr>
-						</c:forEach> 
-				</tbody>
-                </table>
+		<!-- 左边两个div的宽度为250px -->
+		<div style="width: 800px;height: 500px;margin:25px 425px">
+			<div class="book_box">
+            <div class="verificationBox">
+                <h2>保单详情</h2>
+                <form action="upinfo" method="post" enctype="multipart/form-data" id="dform" >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">产品名称:</label>
+                        <input type="text" class="input" id="applyname" name="applyname"  readonly="readonly"/>
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">投保人姓名:</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">投保人身份证号码:</label>
+                        <input type="text" class="input" id="applyname" name="applyname"  readonly="readonly"/>
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">投保人手机号码:</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">投保人邮箱:</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">被保人名字:</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">投保人与被保人关系:</label>
+                        <input type="text" class="input" id="applyname" name="applyname"  readonly="readonly"/>
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">被保人身份证号码:	</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">被保人手机号码:</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">受益人方式:</label>
+                        <input type="text" class="input" id="applyname" name="applyname"  readonly="readonly"/>
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">保费:</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">保额:</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">保单生效起始日:</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">保单生效截止日:</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                    <p>
+                        <label for="recognizeeName" style="width: 150px;margin-left: 150px">保单状态:</label>
+                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                    </p >
+                </form>
+                
             </div>
-        </div>
-    </section>
+          </div>
+			<div style="text-align: center;"><button style="width: 150px;height: 50px;background-color: #FF6F03;font-size: 20px;color: black;" onclick="goinfo()">修改</button></div>
 		</div>
 </body>
 </html>

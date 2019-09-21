@@ -11,23 +11,31 @@
 <base href="<%=basepath %>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<style type="text/css">
+	a:hover {
+	color: #333333;
+}
+</style>
 <link href="/backstage/css/eys_stly.css" rel="stylesheet" type="text/css" />
 </head>
 <body  style="overflow-x:hidden">
 <div class="left_all">
 <div class="left1">
 <ul>
-<li><div class="div_icon"><a href="cc/backhoutai"style="color: #FFFFFF">首页</a></div>
+<li><div class="div_icon">首页</div>
 	<ul style="margin-top:50px;">
-<li><a href="index.html"target="rightFrame">首页</a></li>
-
+<li><a href="cc/backhoutai"target="rightFrame">首页</a></li>
 	</ul>
 </li>
 
 
 
 	</li>
-<li><div class="div_icon"><a href="cc/yewuyuan" style="color: #FFFFFF">业务员</a></div></li>
+<li><div class="div_icon">业务员</div>
+<ul style="margin-top:50px;">
+<li><a href="cc/yewuyuan" target="rightFrame">业务员</a></li>
+</ul>
+</li>
 <li><div class="div_icon">理赔管理</div>
 <ul style="margin-top:50px;">
 <li><a href="shoe_house.html" target="rightFrame">理赔审核</a></li>

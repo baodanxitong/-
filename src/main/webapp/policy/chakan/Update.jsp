@@ -5,17 +5,7 @@
 %>
 <!DOCTYPE html>
 <html lang="en">
-<script type="text/javascript" src="/js/jquery-1.12.3.min.js"></script>
-<script type="text/javascript">
-	function lipei(){
-		window.location.href="/app/ye";
-	}
-</script>
-<script type="text/javascript">
-	function 朱旭伟(){
-		window.location.href="/cc/upinfo";
-	}
-</script>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript">
 function(){
 
@@ -44,18 +34,20 @@ function gopage(myurl,menuid){
 	$("#mainframe").attr("src",myurl+"&menuid="+menuid);
 }
 </script>
-
+<script type="text/javascript">
+function baocun(){
+	window.location.href="/cc/back";
+}
+</script>
 <head>
 <base href="<%=basepath %>">
     <meta charset="utf-8">
-    <title>保单详情</title>
+    <title>保单修改</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/jquery.slideBox.css">
     <link rel="stylesheet" href="css/book.css">
-    
 </head>
-
 <body>
 <div class="wrapper">
     <!--------------------------------------头用户开始------------------------------------->
@@ -109,11 +101,11 @@ function gopage(myurl,menuid){
                     </p >
                     <p>
                         <label for="recognizeeName" style="width: 150px;margin-left: 150px">投保人手机号码:</label>
-                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                        <input type="text" class="input" id="" name=""  />
                     </p >
                     <p>
                         <label for="recognizeeName" style="width: 150px;margin-left: 150px">投保人邮箱:</label>
-                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                        <input type="text" class="input" id="" name=""  />
                     </p >
                     <p>
                         <label for="recognizeeName" style="width: 150px;margin-left: 150px">被保人名字:</label>
@@ -129,7 +121,7 @@ function gopage(myurl,menuid){
                     </p >
                     <p>
                         <label for="recognizeeName" style="width: 150px;margin-left: 150px">被保人手机号码:</label>
-                        <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
+                        <input type="text" class="input" id="" name=""  />
                     </p >
                     <p>
                         <label for="recognizeeName" style="width: 150px;margin-left: 150px">受益人方式:</label>
@@ -155,9 +147,7 @@ function gopage(myurl,menuid){
                         <label for="recognizeeName" style="width: 150px;margin-left: 150px">保单状态:</label>
                         <input type="text" class="input" id="applyname" name="applyname" readonly="readonly" />
                     </p >
-                    <input type="button" class="subBtn" value="申请理赔" onclick="lipei">
-                    <input type="button" class="subBtn" value="申请退保" onclick="朱旭伟">
-                    
+                    <input type="button" class="subBtn" value="保存" onclick="baocun()">
                 </form>
                 
             </div>

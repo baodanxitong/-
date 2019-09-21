@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 	String path=request.getContextPath();
 	String basepath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -770,24 +772,20 @@ body {
 	                    <tr id="table_tr"></tr>
 	                    </thead>
 						<tbody>
-						<%-- <c:forEach items="" var="">
+						<c:forEach items="${infolist }" var="il">
 							<tr>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-							</tr>
-						</c:forEach> --%>
-							<tr>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
+								<td>${il.toubao_name }</td>
+								<td>${il.beibao_name }</td>
+								<td>${il.product_name }</td>
+								<td>${il.price }</td>
+								<td>
+									<fmt:formatDate value="${il.start_date }" pattern="yyyy年-MM月-dd日"/>
+								</td>
+								<%-- <td>${il.start_date }</td> --%>
 								<td><a href="cc/jump">详情</a></td>
 							</tr>
+						</c:forEach> 
+							
 							
 					</tbody>
 	                </table>
