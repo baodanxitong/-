@@ -1019,75 +1019,32 @@ DataTable.ext.buttons.csvHtml5 = {
 	},
 
 	action: function ( e, dt, button, config ) {
-		var id = $('#id1').val();
-		var output = '';
-		//ajax调用获取动态数据
-		//把下面的方法包到ajax成功方法中
-		//测试是否能正常返回
 		// Set the text
-		//var output = _exportData( dt, config ).str;
-		//alert(JSON.stringify(_exportData( dt, config )))
-		//output = '三四\'三d,订单2,www1是 \n 三四三d,订单2,www1是 \n 三四三d,订单2,www1是 \n 三四三d,订单2,www1是';
-		$.ajax({
-               type: "get",
-<<<<<<< HEAD
-               url: "custom-export.json",
-=======
-               url: "a.json",
->>>>>>> branch 'master' of https://github.com/baodanxitong/baodanxiangmu.git
-               success: function(columName){
-	               	for(var i =0;i<columName.length; i++){
-					       	output+=columName[i].data;
-//					       	alert(JSON.stringify(output));
-				        }
-			        var charset = config.charset;
+		var output = _exportData( dt, config ).str;
+		output="1,2,3\n a,b,c";
+		var charset = config.charset;
 
-					if ( config.customize ) {
-						output = config.customize( output, config );
-					}
-			
-					if ( charset !== false ) {
-						if ( ! charset ) {
-							charset = document.characterSet || document.charset;
-						}
-			
-						if ( charset ) {
-							charset = ';charset='+charset;
-						}
-					}
-					else {
-						charset = '';
-					}
-			
-					_saveAs(
-						new Blob( [output], {type: 'text/csv'+charset} ),
-						_filename( config )
-					);
-			    },
-         	});
-//		var charset = config.charset;
-//
-//					if ( config.customize ) {
-//						output = config.customize( output, config );
-//					}
-//			
-//					if ( charset !== false ) {
-//						if ( ! charset ) {
-//							charset = document.characterSet || document.charset;
-//						}
-//			
-//						if ( charset ) {
-//							charset = ';charset='+charset;
-//						}
-//					}
-//					else {
-//						charset = '';
-//					}
-//			
-//					_saveAs(
-//						new Blob( [output], {type: 'text/csv'+charset} ),
-//						_filename( config )
-//					);
+		if ( config.customize ) {
+			output = config.customize( output, config );
+		}
+
+		if ( charset !== false ) {
+			if ( ! charset ) {
+				charset = document.characterSet || document.charset;
+			}
+
+			if ( charset ) {
+				charset = ';charset='+charset;
+			}
+		}
+		else {
+			charset = '';
+		}
+
+		_saveAs(
+			new Blob( [output], {type: 'text/csv'+charset} ),
+			_filename( config )
+		);
 	},
 
 	filename: '*',
