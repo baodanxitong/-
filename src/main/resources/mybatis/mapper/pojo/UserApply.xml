@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="cz.zl.bd.dao.ApplyDAO">
+        <select id="selectall" resultType="cz.zl.bd.pojo.UserApply">
+        select applyid,
+        		apply_name as applyname,
+        		relationship,
+        		apply_phone as applyphone,
+        		bank_deposit as bankdeposit,
+        		bank_name as bankname,
+        		bank_num as banknum,
+        		apply_date as applydate,
+        		settlementstate,
+        		hospital_url,
+        		url_a as urlA,
+        		url_b as urlB,
+        		url_c as urlC,
+        		beibao_id as beibaoId,
+        		insurance_id as insuranceId from user_apply where settlementstate=1
+        </select>
+        <insert id="charu" parameterType="cz.zl.bd.pojo.UserApply">
+        	insert into user_apply (applyid,
+        		apply_name ,
+        		relationship,
+        		apply_phone ,
+        		bank_deposit ,
+        		bank_name ,
+        		bank_num ,
+        		apply_date ,
+        		settlementstate,
+        		hospital_url,
+        		url_a ,
+        		url_b ,
+        		url_c ,
+        		beibao_id ,
+        		insurance_id) values(
+        		use_applyid.nextval,
+        		#{applyname,jdbcType=VARCHAR},
+        		#{relationship,jdbcType=VARCHAR},
+        		#{applyphone,jdbcType=VARCHAR},
+        		#{bankdeposit,jdbcType=VARCHAR},
+        		#{bankname,jdbcType=VARCHAR},
+        		#{banknum,jdbcType=INTEGER},
+        		SYSDATE,
+        		1,
+        		#{hospital_url,jdbcType=VARCHAR},
+        		#{urlA,jdbcType=VARCHAR},
+        		#{urlB,jdbcType=VARCHAR},
+        		#{urlC,jdbcType=VARCHAR},
+        		#{beibaoId,jdbcType=INTEGER},
+        		#{insuranceId,jdbcType=INTEGER}
+        		)
+        </insert>
+        </mapper>

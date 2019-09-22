@@ -80,10 +80,18 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.48</version>
 		</dependency>
+
 		<dependency>
+<<<<<<< HEAD
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2</version>
+=======
+		<groupId>com.oracle</groupId>
+		<artifactId>ojdbc6</artifactId>
+		<version>11.2.0.4.0</version>
+
+>>>>>>> branch 'master' of https://github.com/baodanxitong/baodanxiangmu.git
 		</dependency>
               
         <!-- 数据源 -->

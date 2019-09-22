@@ -182,7 +182,7 @@ body {
     padding-left: 24px;
     background: url("../images/header-icon.png") no-repeat 0 -195px;
 }
-/*鍒嗙被銆佽疆鎾�*/
+
 .floor_main{
     position: relative;
     z-index: 1;
@@ -369,7 +369,7 @@ body {
     font-size: 14px;
 }
 .menu_box .menu_sub .submenu_list li a:hover{
-    color: #ff6700;
+     color: #ff6700; 
 }
 .menu_box .menu_sub .submenu_all{
     position: absolute;
@@ -398,7 +398,7 @@ body {
     height: 36px;
     line-height: 36px;
     text-align: center;
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
     border-radius: 6px;
     display: block;
     margin-top: 20px;
