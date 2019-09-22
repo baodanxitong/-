@@ -11,8 +11,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @AutoConfigureAfter(MyBatisConfig.class)
 public class SpringBeanConfig {
-	 @Autowired
-	    private SqlSessionFactory sqlSessionFactory;
+	@Autowired
+	private SqlSessionFactory sqlSessionFactory;
 
 	@Bean	
 	public MapperScannerConfigurer  mapperScannerConfigurer() {
