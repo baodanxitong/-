@@ -1030,7 +1030,11 @@ DataTable.ext.buttons.csvHtml5 = {
 		//output = '三四\'三d,订单2,www1是 \n 三四三d,订单2,www1是 \n 三四三d,订单2,www1是 \n 三四三d,订单2,www1是';
 		$.ajax({
                type: "get",
+<<<<<<< HEAD
+               url: "custom-export.json",
+=======
                url: "a.json",
+>>>>>>> branch 'master' of https://github.com/baodanxitong/baodanxiangmu.git
                success: function(columName){
 	               	for(var i =0;i<columName.length; i++){
 					       	output+=columName[i].data;

@@ -11,8 +11,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @AutoConfigureAfter(MyBatisConfig.class)
 public class SpringBeanConfig {
-	 @Autowired
-	    private SqlSessionFactory sqlSessionFactory;
+	@Autowired
+	private SqlSessionFactory sqlSessionFactory;
 
 	@Bean	
 	public MapperScannerConfigurer  mapperScannerConfigurer() {
@@ -23,9 +23,9 @@ public class SpringBeanConfig {
 	}
 	@Bean
 	public InternalResourceViewResolver viewResolver() {
-		InternalResourceViewResolver viewResolver=new InternalResourceViewResolver();
-		viewResolver.setPrefix("/");
-		viewResolver.setSuffix(".jsp");
-		return viewResolver;
-	}
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/policy/shenhe/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    }
 }

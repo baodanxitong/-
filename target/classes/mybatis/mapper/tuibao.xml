@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zl.dao.tuibao">
+	<!--从保单数据表中查询所有未过期的保单-->
+	<select id="GetTuiBaoInfo" resultType="com.zl.pojo.tuibaoinfo" parameterType="Integer">
+		select * from (select rownum r,t.* from insurance t) where r&lt;=${PageNum}*4 and r&gt;=${PageNum}*4-3
+	</select>
+	<!--从保单数据表中查询所有未过期的保单数量-->
+	<select id="GetTuiBaoCount" resultType="Integer">
+		select count(*) from insurance
+	</select>
+	
+	<!--用户点击退保按钮之后从数据表中删除选定ID的保单-->
+	<update id="TuiBaoByBaodanId" parameterType="Integer">
+		update insurance set status='失效'   where insurance_id=#{insurance_id}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
