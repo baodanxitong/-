@@ -5,7 +5,13 @@ import java.util.Date;
 
 public class Info implements Serializable {
 
-	
+	private Integer insurance_id;//主键
+	public Integer getInsurance_id() {
+		return insurance_id;
+	}
+	public void setInsurance_id(Integer insurance_id) {
+		this.insurance_id = insurance_id;
+	}
 	private String toubao_name;//投保人
 	private String beibao_name;//被保人
 	private String product_name;//产品名称

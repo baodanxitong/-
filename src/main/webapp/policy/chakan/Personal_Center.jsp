@@ -797,7 +797,7 @@ body {
 									<c:when test="${il.status==1 }">
 										<a href="app/ye" style="color: red">申请理赔</a>
 										<span>|</span>
-										<a href="http://10.1.14.175:8080/queryalltuibaoinfo" style="color: red">申请退保</a>
+										<a href="http://10.1.14.175:8080/GetInsuranceById/${il.insurance_id}" style="color: red">申请退保</a>
 									</c:when>
 									<c:when test="${il.status==0 }">
 										<span style="color: #c0c0c0">已过期</span>
